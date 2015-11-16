@@ -275,16 +275,13 @@
 		jQuery(document)
 				.ready(
 						function() {
-							Metronic.init(); // init metronic core components
-							Layout.init(); // init current layout
+							Metronic.init();    // init metronic core components
+							Layout.init();      // init current layout
 							Login.init();
 							$
 									.backstretch(
-											[ "${pageContext.request.contextPath}/resources/assets/admin/pages/media/bg/1.jpg"//,
-											//"${pageContext.request.contextPath}/resources/assets/admin/pages/media/bg/2.jpg",
-											//"${pageContext.request.contextPath}/resources/assets/admin/pages/media/bg/3.jpg",
-											//"${pageContext.request.contextPath}/resources/assets/admin/pages/media/bg/4.jpg"
-											], {
+											[ "${pageContext.request.contextPath}/resources/assets/admin/pages/media/bg/1.jpg"],
+											{
 												fade : 1000,
 												duration : 8000
 											}); // init background slide images
