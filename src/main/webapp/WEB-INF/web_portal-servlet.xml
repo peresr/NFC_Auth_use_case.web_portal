@@ -1,0 +1,38 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:mongo="http://www.springframework.org/schema/data/mongo"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans     
+        				http://www.springframework.org/schema/beans/spring-beans.xsd
+				        http://www.springframework.org/schema/mvc 
+				        http://www.springframework.org/schema/mvc/spring-mvc.xsd        				
+        				http://www.springframework.org/schema/context 
+        				http://www.springframework.org/schema/context/spring-context.xsd
+        				http://www.springframework.org/schema/data/mongo
+          				http://www.springframework.org/schema/data/mongo/spring-mongo-1.0.xsd">
+
+	<context:component-scan base-package="ulusofona.tfc.web_portal.controller" />
+
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix">
+			<value>/WEB-INF/jsp/</value>
+		</property>
+		<property name="suffix">
+			<value>.jsp</value>
+		</property>
+	</bean>
+
+	<mvc:resources mapping="/resources/**" location="/resources/"
+		cache-period="31556926" />
+
+	<mvc:annotation-driven />
+	
+	<mongo:mongo id="mongoConnection" host="my.mongo.server" port="12345" write-concern="1"/>
+	
+	<mongo:repositories base-package="my.package.repository">
+    	<mongo:repository id="imageRepository" mongo-template-ref="imageTemplate"/>
+	</mongo:repositories>	
+
+</beans>
