@@ -13,7 +13,7 @@
           				http://www.springframework.org/schema/data/mongo/spring-mongo-1.0.xsd">
 
 	<context:component-scan base-package="ulusofona.tfc.web_portal.controller" />
-
+	
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix">
@@ -24,15 +24,15 @@
 		</property>
 	</bean>
 
-	<mvc:resources mapping="/resources/**" location="/resources/"
-		cache-period="31556926" />
+	<bean id="mongo" class="org.springframework.data.mongodb.core.MongoFactoryBean">
+	    <property name="host" value="localhost" />
+	</bean>
 
-	<mvc:annotation-driven />
+	<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
+	     <constructor-arg name="mongo" ref="mongo" />
+	     <constructor-arg name="databaseName" value="tfc" />
+	</bean>
 	
-	<mongo:mongo id="mongoConnection" host="my.mongo.server" port="12345" write-concern="1"/>
-	
-	<mongo:repositories base-package="my.package.repository">
-    	<mongo:repository id="imageRepository" mongo-template-ref="imageTemplate"/>
-	</mongo:repositories>	
-
+	<mongo:repositories base-package="ulusofona.tfc.web_portal.repository" />
+     
 </beans>

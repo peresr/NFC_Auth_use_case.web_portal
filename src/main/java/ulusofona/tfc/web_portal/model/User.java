@@ -10,23 +10,22 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class User {
 
 	@Id
-	private String id;
 	private String email;
 	private String password;
 
-	/**
-	 * @return the id
+	/*
+	 * 
 	 */
-	public String getId() {
-		return id;
+	public User() {
+		
 	}
-
-	/**
-	 * @param id
-	 *            the id to set
+	
+	/*
+	 * 
 	 */
-	public void setId(String id) {
-		this.id = id;
+	public User(String email, String password) {
+		this.email = email;
+		this.password = password;
 	}
 
 	/**
